@@ -37,10 +37,11 @@
 
 - [查看工作流 JSON](workflows/文生图/Aaalice_Workflow_SDXL/versions/v1.7.1/workflow.json)
 - [查看完整更新日志](workflows/文生图/Aaalice_Workflow_SDXL/versions/v1.7.1/CHANGELOG.md)
-- [查看已发布的安装包](https://github.com/qiuqiu-2/Aaalice-Workflows-SDXL/releases)
+- [下载 v1.7.1 完整安装包](https://github.com/qiuqiu-2/Aaalice-Workflows-SDXL/releases/download/aaalice-workflow-sdxl-v1.7.1/Aaalice_Workflow_SDXL-v1.7.1.zip)
+- [查看 v1.7.1 Release 与校验文件](https://github.com/qiuqiu-2/Aaalice-Workflows-SDXL/releases/tag/aaalice-workflow-sdxl-v1.7.1)
 - [历史版本](workflows/文生图/Aaalice_Workflow_SDXL/README.md)
 
-本地构建的新包在 `_release/Aaalice_Workflow_SDXL-v1.7.1.zip`。Workflow Hub 可下载的版本以 GitHub Releases 实际发布内容为准。
+Workflow Hub 通过仓库目录清单下载 Release 中的安装包。手动下载后，可用 Release 附带的 `SHA256SUMS.txt` 核对文件完整性；本地构建方法见[构建说明](scripts/README.md)。
 
 ## 🚀 安装方式
 
@@ -52,7 +53,7 @@
 
 ### 方式二：手动安装
 
-1. 使用本地构建包，或下载 Release 中对应版本的 `Aaalice_Workflow_SDXL-v1.7.1.zip` 并解压。
+1. 下载 [Aaalice_Workflow_SDXL-v1.7.1.zip](https://github.com/qiuqiu-2/Aaalice-Workflows-SDXL/releases/download/aaalice-workflow-sdxl-v1.7.1/Aaalice_Workflow_SDXL-v1.7.1.zip) 并解压。
 2. 将 `workflow.json` 导入 ComfyUI，或改名后放入当前用户的 `workflows` 目录。
 3. 将包内 `inputs/67b0dddf8124-Aaalice_example.jpg` 复制到 `ComfyUI/input/Aaalice_example.jpg`。
 4. 确认依赖插件齐全，并使用 ComfyUI 0.36.0。
