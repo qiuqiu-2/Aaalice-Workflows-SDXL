@@ -3,8 +3,8 @@
   "id": "aaalice-workflow-sdxl",
   "name": "Aaalice_Workflow_SDXL",
   "category": "文生图",
-  "summary": "在 Aaalice_Workflow v1.5 新版节点基础上增加 SDXL Checkpoint 支持与专用预设。",
-  "description": "保留 Krea 2 / Anima 原有路径，新增 SDXL 模式、Checkpoint Model/CLIP/VAE 自动路由、负面条件与潜空间自动适配，以及默认-SDXL-WAI-v16 参数预设。",
+  "summary": "基于 Aaalice_Workflow v1.7，支持 SDXL Checkpoint、图生图和原生局部重绘。",
+  "description": "保留新版 Silvermoon Anima / Krea 2 预设与 N 卡放大，新增 SDXL 自动路由和 WAI v16 预设；侧边栏绑定与全部采样阶段同步适配。",
   "tags": [
     "SDXL",
     "Krea 2",
@@ -226,6 +226,239 @@
       ],
       "models": [],
       "repository_path": "workflows/文生图/Aaalice_Workflow_SDXL/versions/v1.5.1"
+    },
+    {
+      "version": "1.7.1",
+      "published_at": "2026-10-04T04:23:07Z",
+      "release_tag": "aaalice-workflow-sdxl-v1.7.1",
+      "changelog": "# Aaalice_Workflow_SDXL v1.7.1\n\n基于原版 **Aaalice_Workflow v1.7**（提交 `cdad2aff389ead56325ace81d3d3fddbdfc5a112`），合入 v1.6 与 v1.7 的工作流更新。历史 v1.5.1 保留。\n\n## 上游同步\n\n- Anima 切换为 SilvermoonMix Anima v2.3 2.9B 普通版与 Turbo，保留新版三套官方预设及其参数。\n- 普通底图新增图生图入口，默认关闭。\n- 局部重绘支持当前底模与独立 FLUX.2 Klein 双模式，使用 LanPaint。\n- N 卡放大沿用 VSR + DLSS-NR 及新版侧栏控制。\n- ComfyUI 要求更新为 **0.36.0**；插件清单与上游 v1.7 一致，共 19 个，新增 LanPaint、DLSS5-Comfyui。\n\n## SDXL 适配\n\n- 用核心 CheckpointLoaderSimple 同时提供 MODEL、CLIP、VAE，通过懒加载开关选择整合模型或 Krea / Anima 分体模型。\n- 六条管线（含新增的原生重绘管线）在 SDXL 模式下保留负面条件；关闭 SDXL 后仍由原预设控制是否零化负面条件。\n- 普通底图、双采样底图在 SDXL 下绕过 Krea 多样性增强；原有模型的增强开关继续有效。\n- 双采样和独立潜空间放大自动选择 SDXL 四通道路径，倍率由原有侧栏控制。\n- 新增节点使用 v1.7 最大编号之后的 ID，避免旧补丁与新版 DLSS / Klein 节点编号重叠。\n- 修复侧栏和预设中指向已替换节点的历史绑定，并规范化旧控件标识。\n\n## 默认-SDXL-WAI-v16\n\n打开后默认选择 SDXL 预设，Checkpoint 名称与预设同步为 `SDXL\\waiIllustriousSDXL_v160.safetensors`。同时修正旧工作流中预设名称、实际保存模型及文档参数不一致的问题。\n\n| 阶段 | 参数 |\n| --- | --- |\n| 普通底图 | 30 步、CFG 5.5、Euler Ancestral / Normal、降噪 1 |\n| 双采样底图 | 总步数 30、15 步切换、两段 CFG 5.5、Euler Ancestral / Normal、放大 1.5 倍 |\n| 潜空间放大 | 1.5 倍、20 步、CFG 5.5、Euler Ancestral / Normal、降噪 0.4 |\n| 脸部细化 | 20 步、CFG 5.5、Euler Ancestral / Normal、降噪 0.3 |\n| 原生局部重绘 | 20 步、CFG 5.5、Euler Ancestral / Normal、降噪 0.4 |\n\n分辨率仍为 1024×1536；使用 Checkpoint 自带 CLIP/VAE。界面名称统一使用 SDXL，未硬编码 Clip Skip。其他 SDXL 模型可自行选择并调整参数；LanPaint 重绘参数是本工作流提供的起点。\n\n## 维护与验证\n\n- 增加可重现的工作流生成脚本、安装包构建脚本及回归测试。\n- 清单、安装包大小与 SHA-256 同步生成；不包含模型文件。\n- 静态及离线路由测试覆盖模型切换、负面条件、Krea 增强、潜空间类型、预设和新增流程。实际 GPU 出图需在目标环境进一步验证。\n",
+      "comfyui": {
+        "minimum": "0.36.0",
+        "maximum": "0.36.0"
+      },
+      "package": {
+        "url": "https://github.com/qiuqiu-2/Aaalice-Workflows-SDXL/releases/download/aaalice-workflow-sdxl-v1.7.1/Aaalice_Workflow_SDXL-v1.7.1.zip",
+        "size": 436146,
+        "sha256": "de2e1346bd3dfb191a2a966bb3e112b980fb440e47fe7864e385d335e1ead749"
+      },
+      "preview": null,
+      "custom_nodes": [
+        {
+          "registry_id": null,
+          "name": "ComfyUI-Aaalice-Image-Picker",
+          "version": null,
+          "commit": "e31e21061e010f64ba7060c5c7035863e1a21496",
+          "required": true,
+          "manual": true,
+          "source_url": "https://github.com/Aaalice233/ComfyUI-Aaalice-Image-Picker"
+        },
+        {
+          "registry_id": null,
+          "name": "ComfyUI-Aaalice-Nodes",
+          "version": null,
+          "commit": "2395128e6f02d60ccc4c2b514201533cd8fd3f92",
+          "required": true,
+          "manual": true,
+          "source_url": "https://github.com/Aaalice233/ComfyUI-Aaalice-Nodes"
+        },
+        {
+          "registry_id": null,
+          "name": "ComfyUI-Anima-2.9B-loraPatch",
+          "version": null,
+          "commit": "045f240210b52037e6dd3d8328d776463fe54b96",
+          "required": true,
+          "manual": true,
+          "source_url": "https://github.com/sparklingcoffee777/ComfyUI-Anima-2.9B-loraPatch"
+        },
+        {
+          "registry_id": null,
+          "name": "ComfyUI-Autocomplete-Aaalice",
+          "version": null,
+          "commit": "37cabccf9b4d799b7b53a1e2d74f2cd214fe91d0",
+          "required": true,
+          "manual": true,
+          "source_url": "https://github.com/Aaalice233/ComfyUI-Autocomplete-Aaalice"
+        },
+        {
+          "registry_id": null,
+          "name": "ComfyUI-Forbidden-Vision",
+          "version": null,
+          "commit": "b474d579c7749c8046d267c75512484120626b6d",
+          "required": true,
+          "manual": true,
+          "source_url": "https://github.com/luxdelux7/ComfyUI-Forbidden-Vision"
+        },
+        {
+          "registry_id": null,
+          "name": "ComfyUI-Impact-Pack",
+          "version": null,
+          "commit": "429d0159ad429e64d2b3916e6e7be9c22d025c3c",
+          "required": true,
+          "manual": true,
+          "source_url": "https://github.com/ltdrdata/ComfyUI-Impact-Pack"
+        },
+        {
+          "registry_id": null,
+          "name": "ComfyUI-Inpaint-CropAndStitch",
+          "version": null,
+          "commit": "00d4776c52d84ce150ce5fe50bf90f956db02a4c",
+          "required": true,
+          "manual": true,
+          "source_url": "https://github.com/lquesada/ComfyUI-Inpaint-CropAndStitch"
+        },
+        {
+          "registry_id": null,
+          "name": "comfyui-kjnodes",
+          "version": null,
+          "commit": "d3cfe21625e5170126ce06fbfcfe1d88108688c3",
+          "required": true,
+          "manual": true,
+          "source_url": "https://github.com/kijai/ComfyUI-KJNodes"
+        },
+        {
+          "registry_id": null,
+          "name": "ComfyUI-Lora-Manager",
+          "version": null,
+          "commit": "d4b82d98b2ac25f562fdd7f705a1289f4f40929d",
+          "required": true,
+          "manual": true,
+          "source_url": "https://github.com/willmiao/ComfyUI-Lora-Manager"
+        },
+        {
+          "registry_id": null,
+          "name": "ComfyUI-NVIDIA-RTX-VSR-Pro",
+          "version": null,
+          "commit": "49733df7a02446cf1c1fac4af6f6181682522303",
+          "required": true,
+          "manual": true,
+          "source_url": "https://github.com/whmc76/ComfyUI-NVIDIA-RTX-VSR-Pro"
+        },
+        {
+          "registry_id": null,
+          "name": "ComfyUI-Prompt-Assistant",
+          "version": null,
+          "commit": "e0587e6d50939ae05e92922f1ed2fce008c7f622",
+          "required": true,
+          "manual": true,
+          "source_url": "https://github.com/yawiii/ComfyUI-Prompt-Assistant"
+        },
+        {
+          "registry_id": null,
+          "name": "ComfyUI-WD-Timm-Tagger",
+          "version": null,
+          "commit": "db10c8dc94143c3a75782f4e3e5d29c943ed673b",
+          "required": true,
+          "manual": true,
+          "source_url": "https://github.com/bedovyy/ComfyUI-WD-Timm-Tagger"
+        },
+        {
+          "registry_id": null,
+          "name": "comfyui_queue_sidebar",
+          "version": null,
+          "commit": "bb53a258f7d507d8fa5243c5b1b5516e39f9dabc",
+          "required": true,
+          "manual": true,
+          "source_url": "https://github.com/Zhen-Bo/comfyui_queue_sidebar"
+        },
+        {
+          "registry_id": null,
+          "name": "DLSS5-Comfyui",
+          "version": null,
+          "commit": "b00ccbbc0510abcbb8afc7d383dafa5c9b31f793",
+          "required": true,
+          "manual": true,
+          "source_url": "https://github.com/storyAura/DLSS5-Comfyui"
+        },
+        {
+          "registry_id": null,
+          "name": "krea2-anypaint",
+          "version": null,
+          "commit": "675be5a91eadbf8b8997b21c0e8e1848310b9571",
+          "required": true,
+          "manual": true,
+          "source_url": "https://github.com/alexw5702-afk/krea2-anypaint"
+        },
+        {
+          "registry_id": null,
+          "name": "KreaSeedVarianceEnhancer",
+          "version": null,
+          "commit": "1515d23a5b399a44ccd97482e1105a43937268ae",
+          "required": true,
+          "manual": true,
+          "source_url": "https://github.com/harukimix/KreaSeedVarianceEnhancer"
+        },
+        {
+          "registry_id": null,
+          "name": "LanPaint",
+          "version": null,
+          "commit": "32cf848e93971da380d868936e007f5611218bee",
+          "required": true,
+          "manual": true,
+          "source_url": "https://github.com/scraed/LanPaint"
+        },
+        {
+          "registry_id": null,
+          "name": "rgthree-comfy",
+          "version": null,
+          "commit": "2c5342a8cb0eaecaabf61435a5f37dd594c510ba",
+          "required": true,
+          "manual": true,
+          "source_url": "https://github.com/rgthree/rgthree-comfy"
+        },
+        {
+          "registry_id": null,
+          "name": "SesquiLSR",
+          "version": null,
+          "commit": "befae004248c403f38b76b9f65fd43b901ea3eaa",
+          "required": true,
+          "manual": true,
+          "source_url": "https://github.com/LoganBooker/SesquiLSR"
+        }
+      ],
+      "inputs": [
+        {
+          "source": "Aaalice_example.jpg",
+          "archive": "inputs/67b0dddf8124-Aaalice_example.jpg",
+          "size": 217480,
+          "sha256": "67b0dddf81241123b5c3638a61e3a4385ea9822b0131c795e5a3d53cf1e5726d",
+          "node_ids": [
+            "1213",
+            "1214",
+            "1266",
+            "1270",
+            "1271",
+            "1273",
+            "1340",
+            "1341",
+            "1400",
+            "1423",
+            "1425",
+            "1436",
+            "1440",
+            "1442",
+            "1443",
+            "1489",
+            "1573",
+            "1576",
+            "702",
+            "710",
+            "835",
+            "837",
+            "862",
+            "863",
+            "872",
+            "874",
+            "878",
+            "879",
+            "893",
+            "894",
+            "898",
+            "899"
+          ]
+        }
+      ],
+      "models": [],
+      "repository_path": "workflows/文生图/Aaalice_Workflow_SDXL/versions/v1.7.1"
     }
   ],
   "repository_path": "workflows/文生图/Aaalice_Workflow_SDXL"

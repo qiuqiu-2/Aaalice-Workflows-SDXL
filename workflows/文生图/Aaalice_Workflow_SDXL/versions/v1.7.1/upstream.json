@@ -1,0 +1,232 @@
+{
+  "repository": "https://github.com/Aaalice233/Aaalice-Workflows",
+  "version": "1.7",
+  "commit": "cdad2aff389ead56325ace81d3d3fddbdfc5a112",
+  "workflow_sha256": "41239068edd8c9d7b423a356ae3caed5e18f0fdd1196a242adeb7bcc72c087b7",
+  "workflow_path": "workflows/文生图/Aaalice_Workflow/versions/v1.7/workflow.json",
+  "added_nodes": [
+    {
+      "graph": "126258df-7ece-40a2-9f83-7668e9e90fc1",
+      "id": 1583,
+      "type": "CheckpointLoaderSimple"
+    },
+    {
+      "graph": "126258df-7ece-40a2-9f83-7668e9e90fc1",
+      "id": 1584,
+      "type": "PrimitiveBoolean"
+    },
+    {
+      "graph": "126258df-7ece-40a2-9f83-7668e9e90fc1",
+      "id": 1585,
+      "type": "ComfySwitchNode"
+    },
+    {
+      "graph": "126258df-7ece-40a2-9f83-7668e9e90fc1",
+      "id": 1586,
+      "type": "ComfySwitchNode"
+    },
+    {
+      "graph": "126258df-7ece-40a2-9f83-7668e9e90fc1",
+      "id": 1587,
+      "type": "ComfySwitchNode"
+    },
+    {
+      "graph": "7ec58db4-7f0a-45b6-bd97-e99b17e363f6",
+      "id": 1588,
+      "type": "ComfySwitchNode"
+    },
+    {
+      "graph": "364de051-9076-450c-b03e-ab1e522c0763",
+      "id": 1589,
+      "type": "ComfySwitchNode"
+    },
+    {
+      "graph": "80f21e31-dc49-4fc1-ae80-5b897875fd4e",
+      "id": 1590,
+      "type": "ComfySwitchNode"
+    },
+    {
+      "graph": "884e842d-1cd8-4246-9b57-ebc5e6226621",
+      "id": 1591,
+      "type": "ComfySwitchNode"
+    },
+    {
+      "graph": "c0e10b06-810f-4cb9-b6be-56cd75b6b2d9",
+      "id": 1592,
+      "type": "ComfySwitchNode"
+    },
+    {
+      "graph": "72e27bb9-abaf-424e-ac39-612b99e04a1c",
+      "id": 1593,
+      "type": "ComfySwitchNode"
+    },
+    {
+      "graph": "3a0b7095-b12f-486d-a929-83552382f917",
+      "id": 1594,
+      "type": "ComfySwitchNode"
+    },
+    {
+      "graph": "9d26e6ff-f9d2-4bbd-8fb4-ec136cea5f3a",
+      "id": 1595,
+      "type": "ComfySwitchNode"
+    },
+    {
+      "graph": "80f21e31-dc49-4fc1-ae80-5b897875fd4e",
+      "id": 1596,
+      "type": "SesquiLatentUpscale"
+    },
+    {
+      "graph": "80f21e31-dc49-4fc1-ae80-5b897875fd4e",
+      "id": 1597,
+      "type": "ComfySwitchNode"
+    },
+    {
+      "graph": "0b8b7f9c-1a66-4795-a651-8ecec3394698",
+      "id": 1598,
+      "type": "SesquiLatentUpscale"
+    },
+    {
+      "graph": "0b8b7f9c-1a66-4795-a651-8ecec3394698",
+      "id": 1599,
+      "type": "ComfySwitchNode"
+    }
+  ],
+  "binding_repairs": [
+    {
+      "from": "host_900694cd-5348-4e82-b0da-ee5ea4a6e403/promoted:[\"54\",\"steps\",null]",
+      "to": "promoted:[\"1240\",\"steps\",null]"
+    },
+    {
+      "from": "host_900694cd-5348-4e82-b0da-ee5ea4a6e403/promoted:[\"54\",\"cfg\",null]",
+      "to": "promoted:[\"1240\",\"cfg\",null]"
+    },
+    {
+      "from": "host_900694cd-5348-4e82-b0da-ee5ea4a6e403/promoted:[\"54\",\"sampler_name\",null]",
+      "to": "promoted:[\"1240\",\"sampler_name\",null]"
+    },
+    {
+      "from": "host_900694cd-5348-4e82-b0da-ee5ea4a6e403/promoted:[\"54\",\"scheduler\",null]",
+      "to": "promoted:[\"1240\",\"scheduler\",null]"
+    },
+    {
+      "from": "host_900694cd-5348-4e82-b0da-ee5ea4a6e403/promoted:[\"54\",\"denoise\",null]",
+      "to": "promoted:[\"1240\",\"denoise\",null]"
+    },
+    {
+      "from": "host_900694cd-5348-4e82-b0da-ee5ea4a6e403/promoted:[\"54\",\"seed\",null]",
+      "to": "promoted:[\"1240\",\"seed\",null]"
+    },
+    {
+      "from": "host_900694cd-5348-4e82-b0da-ee5ea4a6e403/promoted:[\"685\",\"timeout\",null]",
+      "to": "promoted:[\"1460\",\"timeout\",null]"
+    },
+    {
+      "from": "host_900694cd-5348-4e82-b0da-ee5ea4a6e403/promoted:[\"241\",\"embed_workflow\",null]",
+      "to": "promoted:[\"1107\",\"embed_workflow\",null]"
+    },
+    {
+      "from": "host_900694cd-5348-4e82-b0da-ee5ea4a6e403/promoted:[\"241\",\"save_with_metadata\",null]",
+      "to": "promoted:[\"1107\",\"save_with_metadata\",null]"
+    },
+    {
+      "from": "host_900694cd-5348-4e82-b0da-ee5ea4a6e403/promoted:[\"241\",\"filename_prefix\",null]",
+      "to": "promoted:[\"1107\",\"filename_prefix\",null]"
+    },
+    {
+      "from": "host_c959b807-ee66-41bc-a041-74a85547cc20/promoted:[\"696\",\"timeout\",null]",
+      "to": "promoted:[\"1463\",\"timeout\",null]"
+    },
+    {
+      "from": "host_c959b807-ee66-41bc-a041-74a85547cc20/promoted:[\"540\",\"save_with_metadata\",null]",
+      "to": "promoted:[\"1108\",\"save_with_metadata\",null]"
+    },
+    {
+      "from": "host_c959b807-ee66-41bc-a041-74a85547cc20/promoted:[\"540\",\"filename_prefix\",null]",
+      "to": "promoted:[\"1108\",\"filename_prefix\",null]"
+    },
+    {
+      "from": "host_c959b807-ee66-41bc-a041-74a85547cc20/promoted:[\"540\",\"embed_workflow\",null]",
+      "to": "promoted:[\"1108\",\"embed_workflow\",null]"
+    },
+    {
+      "from": "host_5ec9065d-be24-4b4b-b4fa-7417664bf535/scale_by",
+      "to": "promoted:[\"1064\",\"scale\",null]"
+    },
+    {
+      "from": "host_5ec9065d-be24-4b4b-b4fa-7417664bf535/upscale_method",
+      "to": "promoted:[\"1064\",\"model_format\",null]"
+    },
+    {
+      "from": "host_5ec9065d-be24-4b4b-b4fa-7417664bf535/steps",
+      "to": "promoted:[\"1248\",\"steps\",null]"
+    },
+    {
+      "from": "host_5ec9065d-be24-4b4b-b4fa-7417664bf535/cfg",
+      "to": "promoted:[\"1248\",\"cfg\",null]"
+    },
+    {
+      "from": "host_5ec9065d-be24-4b4b-b4fa-7417664bf535/sampler_name",
+      "to": "promoted:[\"1248\",\"sampler_name\",null]"
+    },
+    {
+      "from": "host_5ec9065d-be24-4b4b-b4fa-7417664bf535/scheduler",
+      "to": "promoted:[\"1248\",\"scheduler\",null]"
+    },
+    {
+      "from": "host_5ec9065d-be24-4b4b-b4fa-7417664bf535/denoise",
+      "to": "promoted:[\"1248\",\"denoise\",null]"
+    },
+    {
+      "from": "host_5ec9065d-be24-4b4b-b4fa-7417664bf535/seed",
+      "to": "promoted:[\"1248\",\"seed\",null]"
+    },
+    {
+      "from": "host_5ec9065d-be24-4b4b-b4fa-7417664bf535/switch",
+      "to": "promoted:[\"1109\",\"enabled\",null]"
+    },
+    {
+      "from": "host_5ec9065d-be24-4b4b-b4fa-7417664bf535/save_with_metadata",
+      "to": "promoted:[\"1109\",\"save_with_metadata\",null]"
+    },
+    {
+      "from": "host_5ec9065d-be24-4b4b-b4fa-7417664bf535/embed_workflow",
+      "to": "promoted:[\"1109\",\"embed_workflow\",null]"
+    },
+    {
+      "from": "host_5ec9065d-be24-4b4b-b4fa-7417664bf535/filename_prefix",
+      "to": "promoted:[\"1109\",\"filename_prefix\",null]"
+    },
+    {
+      "from": "host_5ec9065d-be24-4b4b-b4fa-7417664bf535/desktop_notification",
+      "to": "promoted:[\"427\",\"desktop_notification\",null]"
+    },
+    {
+      "from": "host_5ec9065d-be24-4b4b-b4fa-7417664bf535/message",
+      "to": "promoted:[\"427\",\"message\",null]"
+    },
+    {
+      "from": "host_5ec9065d-be24-4b4b-b4fa-7417664bf535/sound",
+      "to": "promoted:[\"427\",\"sound\",null]"
+    },
+    {
+      "from": "host_5ec9065d-be24-4b4b-b4fa-7417664bf535/volume",
+      "to": "promoted:[\"427\",\"volume\",null]"
+    },
+    {
+      "from": "host_9b25233b-ba58-48f1-90e5-9151bb2af6a6/promoted:[\"400\",\"filename_prefix\",null]",
+      "to": "promoted:[\"1112\",\"filename_prefix\",null]"
+    },
+    {
+      "from": "host_9b25233b-ba58-48f1-90e5-9151bb2af6a6/promoted:[\"400\",\"embed_workflow\",null]",
+      "to": "promoted:[\"1112\",\"embed_workflow\",null]"
+    },
+    {
+      "from": "host_9b25233b-ba58-48f1-90e5-9151bb2af6a6/promoted:[\"400\",\"save_with_metadata\",null]",
+      "to": "promoted:[\"1112\",\"save_with_metadata\",null]"
+    },
+    {
+      "from": "host_102be07e-193e-40ce-9be6-7967cdc50dd0/promoted:[\"1466\",\"unet_name\",null]",
+      "to": "promoted:[\"1498\",\"unet_name\",null]"
+    }
+  ]
+}

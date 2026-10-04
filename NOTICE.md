@@ -1,6 +1,6 @@
 # Attribution Notice
 
-`Aaalice_Workflow_SDXL` is a modified version of `Aaalice_Workflow v1.5` from:
+`Aaalice_Workflow_SDXL` is a modified version of `Aaalice_Workflow` (currently v1.7; historical v1.5.1 was based on v1.5) from:
 
 - Original author: Aaalice233
 - Original repository: https://github.com/Aaalice233/Aaalice-Workflows
